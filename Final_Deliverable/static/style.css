@@ -1,0 +1,62 @@
+/* Set the font family and background color for the entire page */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("https://i.ibb.co/7Xc3jHg/sunset-with-sun-clouds-blue-orange-dramatic-sky-104337-6134-transformed.jpg");
+    background-color: hsla(0, 0%, 0%, 0);
+  }
+  
+  h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  p {
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  img {
+    display: block;
+    margin: auto;
+    width: 60%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+  
+  i {
+    font-size: 16px;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+  }
+  
+  button {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: #36a6cb;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #005f79;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #008CBA;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }

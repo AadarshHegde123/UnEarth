@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>UnEarth</title>
+</head>
+<body>
+  <h1>UnEarth</h1>
+  <object type="image/svg+xml" data="{{ url_for('static', filename='world_map.svg') }}" width="100%" height="600">
+    Your browser does not support SVGs
+  </object>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        {% if "US" in message %}
+        <div style="text-align:center">
+          <img src="{{ url_for('static', filename='images/wp8975771.jpeg') }}" alt="Nature" width="350">
+          <div><i>Yosemite National Park, United States</i></div>
+        </div>
+        {% endif %}
+        {% if "Canada" in message %}
+        <div style="text-align:center">
+          <img src="{{ url_for('static', filename='images/CanadaPark.jpeg') }}" alt="Nature" width="350">
+          <div><i>Park Lake, Canada</i></div>
+        </div>
+        {% endif %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    
+  {% endif %}
+{% endwith %}
+
+
+  <script type="text/javascript">
+    var svg_object = document.getElementsByTagName('object')[0];
+    svg_object.addEventListener('load', function() {
+      var svg_document = svg_object.contentDocument;
+      var world_map = svg_document.getElementsByTagName('svg')[0];
+      world_map.addEventListener('click', function(event) {
+        var x = event.offsetX;
+        var y = event.offsetY;
+        console.log("Clicked at", x, y);
+        
+        //send click coordinates to Flask using a POST request
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/map_click', true);
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.send('x=' + x + '&y=' + y);
+        //TODO: display information about the clicked location on the page
+        
+      });
+    }, false);
+  </script>
+
+<!-- <a href="#" onclick="showPopup()">Show Popup</a> -->
+
+<script>
+  function showPopup() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/map_click', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == XMLHttpRequest.DONE) {
+        var response = JSON.parse(xhr.responseText);
+        if (response.display_textbox) {
+          var textbox = document.createElement('input');
+          textbox.type = 'text';
+          textbox.value = 'Textbox content';
+          document.body.appendChild(textbox);
+        }
+      }
+    };
+    xhr.send('x=' + x + '&y=' + y);
+  }
+  </script>
+  
+</body>
+</html>

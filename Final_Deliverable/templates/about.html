@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Welcome to UnEarth!</title>
+    
+  </head>
+  <body>
+    <h1>Welcome to UnEarth!</h1>
+    <p>Earth houses some absolutely incredible views, food, music, and pretty much anything else you can think of – and we only have one opportunity to go and explore it!<p> 
+    <p>Think of UnEarth as your personal tour guide for our planet. Simply click on any country and it'll show you music, nature, views, and the most popular foods indigenous to the region! </p>
+    <div style="text-align:center">
+        <img src="{{ url_for('static', filename='images/salar_de_uyuni.jpeg') }}" alt="Nature" width="350">
+        <div><i>Bolivia, Salar De Uyuni</i></div>
+      </div>
+    <p>Who knows, maybe you'll even find some spot to add to your bucket list! Every time you click on a country it gets marked as explored.  </p>
+    <p>There are over 190 countries to explore in the world. Ready to jump in?  </p>
+    
+    
+    
+    <a href="{{ url_for('index') }}"><button>Let's Start!</button></a>
+    <a href="{{ url_for('about_me') }}"><button>More About</button></a>
+  </body>
+</html>
